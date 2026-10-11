@@ -1,0 +1,566 @@
+{
+  "neurons": [
+    {
+      "key": "квантовая запутанность",
+      "value": "Эффект, при котором состояние двух частиц остается связанным независимо от расстояния между ними",
+      "creator": "user",
+      "hash": "a0b0d8d49c46feac9abaec71e5e46107000b7fd2122e54f563fc6abbb0486e01",
+      "parent_hash": null,
+      "created_at": 1772997916.023436,
+      "last_active": 1772998431.6717668,
+      "activation_count": 7,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.6371919776880991,
+            0.3065719875819203
+          ],
+          [
+            0.6371919776880991,
+            0.3065719875819203
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "8bf6ff156b2e14a8f49a4e4ced207298708e2d8a735605cbc79b367b719dee7a": 0.8,
+        "eae3f87fe6a2c09abc8946d87bc21c24707427af6f950d19d9fcc466dd67c4ef": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "квантовый компьютер",
+      "value": "Вычислительное устройство, использующее кубиты вместо битов",
+      "creator": "user",
+      "hash": "13d5d59f75cbccdcb20208ce598d9c131108ec6e636dc2bb357df27c5e6057f2",
+      "parent_hash": null,
+      "created_at": 1772997932.3364708,
+      "last_active": 1772998345.131547,
+      "activation_count": 2,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "b0567a8e4e20f23035aa7c1726d36f3cc713ed72f964e6df79976b7d45755a5c": 0.8,
+        "feabb0c64aeee5a762a16de575a65206c0843737e30d32836faa4eec44253ba6": 0.8,
+        "4eddf8933dbf92534d60e6231927eba29c6922b67755c009077db6a44326b0d5": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "кубит",
+      "value": "Базовая единица квантовой информации, может находиться в суперпозиции 0 и 1",
+      "creator": "user",
+      "hash": "848ab96d468dac4118ee939a1a455863d9b7852a3418bb22c71fde5f2cb9dba1",
+      "parent_hash": null,
+      "created_at": 1772997941.8446243,
+      "last_active": 1772998345.1320412,
+      "activation_count": 6,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "adb04040ae7405e46d7144da0abd042ac56cc630ebac5051e84b42ada052ab52": 0.8,
+        "5c30e59bf0bd3f07bbe562323bd21c7961e0e11e41e4fb828d72e4a01281fc5f": 0.8,
+        "11265aee518249313363c5e9b121ad3b04b9f9b05c8d35062c66a6231e1d65ac": 0.8,
+        "92ea045033061a3091cfe85fce93716ea0487452ef95a754c07f712f3b005cf6": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "декогеренция",
+      "value": "Потеря квантового состояния из-за взаимодействия с окружением",
+      "creator": "user",
+      "hash": "6082bd29b82ee1502b5b832699b7f56693a4a28f99de22bd0b1444318dc893a4",
+      "parent_hash": null,
+      "created_at": 1772997952.1308265,
+      "last_active": 1772998124.4593368,
+      "activation_count": 1,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "6216ac91d7155247c50cceea255b2b29c03033a7ddc4245250e4b72dfdc3db72": 0.8,
+        "0372509f3b2128c6809a5b4e2dacab0f04cc882e2b1676db3330ab7344f6e96f": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "квантовое превосходство",
+      "value": "Момент, когда квантовый компьютер решает задачу, непосильную для классического",
+      "creator": "user",
+      "hash": "239f742de2af46305ed841b3c50d20b97dffde142e53abf93b005316fd358938",
+      "parent_hash": null,
+      "created_at": 1772997961.6479971,
+      "last_active": 1772998259.3965359,
+      "activation_count": 4,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            -0.06233339561619777,
+            -0.6595816346322257
+          ],
+          [
+            -0.6933592308102043,
+            -0.2834071137023865
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {},
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "суперпозиция",
+      "value": "Состояние кубита, когда он одновременно 0 и 1",
+      "creator": "user",
+      "hash": "35c68b0eaa191dd735f3487937b763f640a9b0fbc4a515c151adb8042f37ce65",
+      "parent_hash": null,
+      "created_at": 1772998161.0552611,
+      "last_active": 1772998161.0552611,
+      "activation_count": 0,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "2ff951465a65037d2e086bc133a1994a11cdcbd24196f71491f5716f3d256f5e": 0.8,
+        "d596d312a7ada192c08fcbe8377d74b94dae9f0e9912ca7f75d241139b23b22d": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "измерение",
+      "value": "Процесс, при котором квантовое состояние коллапсирует в классическое",
+      "creator": "user",
+      "hash": "510168251dd861480d819b6555eba2b500d2e7110ad05f7c1251157771a9200e",
+      "parent_hash": null,
+      "created_at": 1772998168.7068307,
+      "last_active": 1772998221.4199302,
+      "activation_count": 1,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.45820003777116514,
+            0.5385654327809232
+          ],
+          [
+            0.45820003777116514,
+            0.5385654327809232
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "426d41371094d69e6134f9a1ba28923d55565f5a4ffd822641f0a39139e97d99": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "вентиль Адамара",
+      "value": "Квантовый гейт, создающий суперпозицию",
+      "creator": "user",
+      "hash": "b22d6cdc1033644ee887bcc8b73280869b52f965c395b8f1c427adad4834e9cd",
+      "parent_hash": null,
+      "created_at": 1772998177.4486637,
+      "last_active": 1772998259.3958595,
+      "activation_count": 1,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.47752865502620195,
+            0.5215039631957428
+          ],
+          [
+            0.47752865502620195,
+            0.5215039631957428
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "1ad0a1f663f27775a87b1ca0ce9f3b00588c08aa9da5dd56959d5142b2cae74d": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "квантовая телепортация",
+      "value": "Передача квантового состояния с помощью запутанности",
+      "creator": "user",
+      "hash": "58ba52a5b6be19e76854a184655853ba5212ddc4e40a07bbda21c44cdcacd03d",
+      "parent_hash": null,
+      "created_at": 1772998383.018765,
+      "last_active": 1772998383.018765,
+      "activation_count": 0,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "9d81c33aabad708a3d12abfc60dad73a3f7b09f8c40b77f8cebf7486c0c4c27e": 0.8,
+        "e5c33f8aed58e1207ecce9ba523840b8a10829b46f7f8171cb9b7c64fe717fc1": 0.8,
+        "2d401781601e133450ede0df448858fa5c64ac1efa12aed214bb73888a7dde10": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "квантовая криптография",
+      "value": "Защита данных на основе законов квантовой механики",
+      "creator": "user",
+      "hash": "992f952080c9ad5804f4dc2ea6fae1ea8c4f295ce4dd0374687925bc22d0f65b",
+      "parent_hash": null,
+      "created_at": 1772998392.1978533,
+      "last_active": 1772998504.0214357,
+      "activation_count": 1,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "52241dd6314e5f4b0e88315b8772fede17f7dc101c35f859715e048a7d7e566c": 0.8,
+        "eb4ee0e80d785ad18d859e1013f2a06e4bded75c1edc135638c84509f1c9a9c1": 0.8,
+        "ad9b902ceb0505425570a78fd061d3ad1a16f337dca44d714e941459dcb2a00f": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    },
+    {
+      "key": "протокол BB84",
+      "value": "Первый протокол квантового распределения ключей",
+      "creator": "user",
+      "hash": "ddd1f5c6687c3d15e6bc429c8936003d5cbc7670748ac7c8eb08ada90c11e2fb",
+      "parent_hash": null,
+      "created_at": 1772998401.5949953,
+      "last_active": 1772998401.5949953,
+      "activation_count": 0,
+      "quantum_state": {
+        "amplitudes": [
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.7071067811865476,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "measured": false,
+        "collapsed_value": null,
+        "phase": 0.0,
+        "last_evolution": 0.0
+      },
+      "entangled_with": {
+        "c17b97f3b21b0c011ff37c852ea86ab4bd91eb03ab542b8a9fe9f27d961af532": 0.8
+      },
+      "metadata": {
+        "version": "1.0",
+        "type": "quantum_neuron",
+        "tags": []
+      }
+    }
+  ],
+  "edges": [
+    [
+      "8bf6ff156b2e14a8f49a4e4ced207298708e2d8a735605cbc79b367b719dee7a",
+      "adb04040ae7405e46d7144da0abd042ac56cc630ebac5051e84b42ada052ab52",
+      0.8
+    ],
+    [
+      "5c30e59bf0bd3f07bbe562323bd21c7961e0e11e41e4fb828d72e4a01281fc5f",
+      "b0567a8e4e20f23035aa7c1726d36f3cc713ed72f964e6df79976b7d45755a5c",
+      0.8
+    ],
+    [
+      "6216ac91d7155247c50cceea255b2b29c03033a7ddc4245250e4b72dfdc3db72",
+      "feabb0c64aeee5a762a16de575a65206c0843737e30d32836faa4eec44253ba6",
+      0.8
+    ],
+    [
+      "11265aee518249313363c5e9b121ad3b04b9f9b05c8d35062c66a6231e1d65ac",
+      "2ff951465a65037d2e086bc133a1994a11cdcbd24196f71491f5716f3d256f5e",
+      0.8
+    ],
+    [
+      "1ad0a1f663f27775a87b1ca0ce9f3b00588c08aa9da5dd56959d5142b2cae74d",
+      "d596d312a7ada192c08fcbe8377d74b94dae9f0e9912ca7f75d241139b23b22d",
+      0.8
+    ],
+    [
+      "0372509f3b2128c6809a5b4e2dacab0f04cc882e2b1676db3330ab7344f6e96f",
+      "426d41371094d69e6134f9a1ba28923d55565f5a4ffd822641f0a39139e97d99",
+      0.8
+    ],
+    [
+      "9d81c33aabad708a3d12abfc60dad73a3f7b09f8c40b77f8cebf7486c0c4c27e",
+      "eae3f87fe6a2c09abc8946d87bc21c24707427af6f950d19d9fcc466dd67c4ef",
+      0.8
+    ],
+    [
+      "52241dd6314e5f4b0e88315b8772fede17f7dc101c35f859715e048a7d7e566c",
+      "c17b97f3b21b0c011ff37c852ea86ab4bd91eb03ab542b8a9fe9f27d961af532",
+      0.8
+    ],
+    [
+      "92ea045033061a3091cfe85fce93716ea0487452ef95a754c07f712f3b005cf6",
+      "eb4ee0e80d785ad18d859e1013f2a06e4bded75c1edc135638c84509f1c9a9c1",
+      0.8
+    ],
+    [
+      "ad9b902ceb0505425570a78fd061d3ad1a16f337dca44d714e941459dcb2a00f",
+      "e5c33f8aed58e1207ecce9ba523840b8a10829b46f7f8171cb9b7c64fe717fc1",
+      0.8
+    ],
+    [
+      "2d401781601e133450ede0df448858fa5c64ac1efa12aed214bb73888a7dde10",
+      "4eddf8933dbf92534d60e6231927eba29c6922b67755c009077db6a44326b0d5",
+      0.8
+    ]
+  ],
+  "key_to_hash": {
+    "квантовая запутанность": "adb04040ae7405e46d7144da0abd042ac56cc630ebac5051e84b42ada052ab52",
+    "квантовый компьютер": "5c30e59bf0bd3f07bbe562323bd21c7961e0e11e41e4fb828d72e4a01281fc5f",
+    "кубит": "8bf6ff156b2e14a8f49a4e4ced207298708e2d8a735605cbc79b367b719dee7a",
+    "декогеренция": "feabb0c64aeee5a762a16de575a65206c0843737e30d32836faa4eec44253ba6",
+    "квантовое превосходство": "923ed9f93276a462f67369b0431e1eadeb07f327368668aec17c39f10ae4b8c2",
+    "суперпозиция": "11265aee518249313363c5e9b121ad3b04b9f9b05c8d35062c66a6231e1d65ac",
+    "измерение": "0372509f3b2128c6809a5b4e2dacab0f04cc882e2b1676db3330ab7344f6e96f",
+    "вентиль Адамара": "d596d312a7ada192c08fcbe8377d74b94dae9f0e9912ca7f75d241139b23b22d",
+    "квантовая телепортация": "eae3f87fe6a2c09abc8946d87bc21c24707427af6f950d19d9fcc466dd67c4ef",
+    "квантовая криптография": "c17b97f3b21b0c011ff37c852ea86ab4bd91eb03ab542b8a9fe9f27d961af532",
+    "протокол BB84": "52241dd6314e5f4b0e88315b8772fede17f7dc101c35f859715e048a7d7e566c"
+  },
+  "stats": {
+    "total_facts": 11,
+    "total_searches": 11,
+    "avg_search_time": 0.0009921464053067293,
+    "last_save": 1772998528.7935362,
+    "created_at": 1772997741.8924863
+  },
+  "recent_queries": [
+    "кубит",
+    "квантовый",
+    "почему кубиты особенные",
+    "что такое декогеренция",
+    "квантовые вентили",
+    "почему важно измерение",
+    "вентиль Адамара",
+    "квантовый компьютер",
+    "как передать информацию через запутанность",
+    "квантовая криптография"
+  ],
+  "saved_at": 1772998535.2317948
+}

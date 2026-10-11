@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Джарвис 8.2 — Квантовая память C₁₂₃</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+        }
+
+        body {
+            background: #0a0c0f;
+            color: #e4e6eb;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Шапка */
+        header {
+            background: #1e1f24;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #2f3136;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            background: linear-gradient(135deg, #8e9efc, #b983ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header .badge {
+            background: #2f3136;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #b0b3b8;
+            border: 1px solid #3a3f48;
+        }
+
+        .status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #2ecc71;
+            box-shadow: 0 0 10px #2ecc71;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Основной контейнер чата */
+        .chat-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            scroll-behavior: smooth;
+        }
+
+        /* Сообщения */
+        .message {
+            max-width: 80%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: fadeIn 0.2s ease;
+            position: relative;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user {
+            align-self: flex-end;
+            background: #2b2f36;
+            border-bottom-right-radius: 4px;
+        }
+
+        .jarvis {
+            align-self: flex-start;
+            background: #1e2128;
+            border-bottom-left-radius: 4px;
+            border-left: 3px solid #8e9efc;
+        }
+
+        .system {
+            align-self: center;
+            background: #2f3136;
+            color: #b0b3b8;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        /* Метаданные (проценты, трит) */
+        .meta {
+            font-size: 0.7rem;
+            color: #8e9efc;
+            margin-top: 0.3rem;
+            opacity: 0.8;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Контейнер для мозга (визуализация факта памяти) */
+        .brain-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 5px 12px 5px 8px;
+            background: rgba(142, 158, 252, 0.1);
+            border-radius: 30px;
+            width: fit-content;
+            border: 1px solid rgba(142, 158, 252, 0.3);
+            animation: glow 3s infinite;
+        }
+
+        @keyframes glow {
+            0% { border-color: rgba(142, 158, 252, 0.3); }
+            50% { border-color: rgba(142, 158, 252, 0.8); }
+            100% { border-color: rgba(142, 158, 252, 0.3); }
+        }
+
+        .brain-icon {
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #2f3136, #1e2128);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            border: 2px solid #8e9efc;
+        }
+
+        .brain-icon::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #8e9efc;
+            border-radius: 50%;
+            top: 5px;
+            left: 7px;
+            opacity: 0.8;
+        }
+
+        .brain-icon::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #b983ff;
+            border-radius: 50%;
+            top: 12px;
+            left: 16px;
+        }
+
+        .brain-text {
+            color: #8e9efc;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Иконки для разных типов ответов */
+        .fact-icon {
+            display: inline-block;
+            margin-right: 6px;
+            font-size: 1.2rem;
+        }
+
+        .command-prefix {
+            color: #b983ff;
+            font-weight: bold;
+        }
+
+        .search-result {
+            border-left: 3px solid #b983ff !important;
+        }
+
+        .search-icon {
+            color: #b983ff;
+            margin-right: 5px;
+        }
+
+        /* Визуализация тритов в сообщениях */
+        .trit-1 { border-left-color: #8e9efc; }
+        .trit-2 { border-left-color: #f1c40f; }
+        .trit-3 { border-left-color: #e74c3c; }
+
+        /* Область ввода */
+        .input-area {
+            background: #1e1f24;
+            border-top: 1px solid #2f3136;
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        input {
+            flex: 1;
+            background: #2b2f36;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 30px;
+            color: #e4e6eb;
+            font-size: 1rem;
+            outline: 1px solid #3a3f48;
+            transition: all 0.2s;
+        }
+
+        input:focus {
+            outline: 2px solid #8e9efc;
+            background: #2f3136;
+        }
+
+        input::placeholder {
+            color: #5f6670;
+        }
+
+        button {
+            background: linear-gradient(135deg, #8e9efc, #b983ff);
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #0a0c0f;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 10px rgba(142, 158, 252, 0.3);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 15px rgba(142, 158, 252, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Подвал */
+        .footer-note {
+            text-align: center;
+            padding: 0.5rem;
+            color: #5f6670;
+            font-size: 0.75rem;
+            border-top: 1px solid #2f3136;
+            background: #1a1c20;
+        }
+
+        /* Скроллбар */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1f24;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a3f48;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4f58;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            .chat-container {
+                padding: 1rem;
+            }
+            .message {
+                max-width: 90%;
+            }
+            .input-area {
+                padding: 0.8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            <span>⚛️ Джарвис 8.2</span>
+        </h1>
+        <div class="badge">C₁₂₃ · РКП · Курамото</div>
+        <div class="badge">память с затуханием</div>
+        <div class="status">
+            <span class="status-dot"></span>
+            <span id="connection-status">подключение...</span>
+        </div>
+    </header>
+
+    <div class="chat-container" id="chat">
+        <!-- Системное сообщение будет добавлено через JS -->
+    </div>
+
+    <div class="input-area">
+        <input 
+            type="text" 
+            id="input" 
+            placeholder="Спроси Джарвиса... (/stats, /facts, /remember, /search)" 
+            autofocus
+        >
+        <button id="send">➤</button>
+    </div>
+
+    <div class="footer-note">
+        квантовый резонанс · фазовая память · троичная логика C₁₂₃
+    </div>
+
+    <script>
+        // DOM элементы
+        const chat = document.getElementById('chat');
+        const input = document.getElementById('input');
+        const sendBtn = document.getElementById('send');
+        const connectionStatus = document.getElementById('connection-status');
+// WebSocket подключение
+let ws;
+let reconnectAttempts = 0;
+const MAX_RECONNECT_ATTEMPTS = 5;
+
+function connect() {
+    ws = new WebSocket('ws://localhost:8765');  // Порт 8765 как в сервере
+
+    ws.onopen = () => {
+        console.log('✅ WebSocket connected');
+        connectionStatus.textContent = 'онлайн';
+        connectionStatus.style.color = '#2ecc71';
+        reconnectAttempts = 0;
+        addMessage('🔗 Соединение с квантовой памятью установлено', 'system');
+    };
+
+    ws.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        
+        if (data.type === 'reply' || data.type === 'system') {
+            addMessage(data.text, 'jarvis');
+        } else if (data.type === 'stats') {
+            console.log('📊 Статистика:', data.data);
+        } else if (data.type === 'update') {
+            // Обновляем статус в шапке если нужно
+            document.getElementById('connection-status').textContent = 
+                `онлайн (${data.viz.nodes}н/${data.viz.edges}св)`;
+        } else if (data.type === 'error') {
+            addMessage(`❌ ${data.text}`, 'system');
+        }
+    };
+
+    ws.onclose = () => {
+        console.log('❌ WebSocket closed');
+        connectionStatus.textContent = 'офлайн';
+        connectionStatus.style.color = '#e74c3c';
+        
+        if (reconnectAttempts < MAX_RECONNECT_ATTEMPTS) {
+            reconnectAttempts++;
+            const delay = 2000 * reconnectAttempts;
+            setTimeout(connect, delay);
+            addMessage(`⚠️ Переподключение через ${delay/1000}с...`, 'system');
+        }
+    };
+
+    ws.onerror = (err) => {
+        console.error('WebSocket error:', err);
+    };
+}
+
+// Отправка сообщения
+function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+
+    if (ws && ws.readyState === WebSocket.OPEN) {
+        addMessage(text, 'user');
+        
+        ws.send(JSON.stringify({ 
+            type: 'message', 
+            text: text 
+        }));
+        
+        input.value = '';
+    } else {
+        addMessage('⚠️ Нет соединения с сервером', 'system');
+    }
+}
+        // Добавление сообщения в чат
+        function addMessage(text, type) {
+            const msgDiv = document.createElement('div');
+            
+            // Определяем тип сообщения
+            if (type === 'system' || type === 'jarvis-welcome') {
+                msgDiv.className = 'message system';
+                msgDiv.textContent = text;
+                chat.appendChild(msgDiv);
+                msgDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                return;
+            }
+
+            // Обычные сообщения (user/jarvis)
+            msgDiv.className = `message ${type}`;
+            
+            // Определяем, что за ответ (для визуальных фишек)
+            const isCommand = text.startsWith('/') || text.startsWith('📊') || text.startsWith('🧠') || text.startsWith('🆘');
+            const isSearchResult = text.includes('Результаты поиска') || text.includes('🌐');
+            const isStats = text.includes('СТАТИСТИКА') || text.includes('Фактов:');
+            const isFact = !isCommand && !isSearchResult && !isStats && type === 'jarvis';
+            
+            // Извлекаем метаданные из конца сообщения [процент | трит | φ]
+            let cleanText = text;
+            let metadata = '';
+            const metaMatch = text.match(/\n\n\[(.*?)\]$/);
+            
+            if (metaMatch) {
+                metadata = metaMatch[1];
+                cleanText = text.replace(/\n\n\[.*?\]$/, '');
+            }
+
+            // Контейнер для контента
+            const contentWrapper = document.createElement('div');
+            contentWrapper.style.display = 'flex';
+            contentWrapper.style.alignItems = 'center';
+            contentWrapper.style.gap = '6px';
+            contentWrapper.style.flexWrap = 'wrap';
+
+            // Иконка в зависимости от типа
+            if (isSearchResult) {
+                const icon = document.createElement('span');
+                icon.className = 'search-icon';
+                icon.textContent = '🌐';
+                contentWrapper.appendChild(icon);
+                msgDiv.classList.add('search-result');
+            } else if (isStats) {
+                const icon = document.createElement('span');
+                icon.className = 'fact-icon';
+                icon.textContent = '📊';
+                contentWrapper.appendChild(icon);
+            } else if (isCommand) {
+                const icon = document.createElement('span');
+                icon.className = 'fact-icon';
+                icon.textContent = '⚙️';
+                contentWrapper.appendChild(icon);
+            } else if (isFact) {
+                // Определяем эмодзи по первому символу (✅, 🔄, 🌀, ⚡)
+                const firstChar = cleanText.charAt(0);
+                if (['✅', '🔄', '🌀', '⚡'].includes(firstChar)) {
+                    const icon = document.createElement('span');
+                    icon.textContent = firstChar;
+                    icon.style.fontSize = '1.2rem';
+                    contentWrapper.appendChild(icon);
+                    cleanText = cleanText.substring(1).trim(); // убираем эмодзи из текста
+                }
+            }
+
+            // Текст сообщения
+            const contentDiv = document.createElement('span');
+            contentDiv.textContent = cleanText;
+            contentDiv.style.wordBreak = 'break-word';
+            contentDiv.style.flex = '1';
+            contentWrapper.appendChild(contentDiv);
+            
+            msgDiv.appendChild(contentWrapper);
+
+            // Добавляем визуализацию мозга для фактов памяти
+            if (isFact && !isCommand && !isSearchResult && !isStats) {
+                const brainDiv = document.createElement('div');
+                brainDiv.className = 'brain-container';
+                brainDiv.innerHTML = `
+                    <div class="brain-icon"></div>
+                    <span class="brain-text">ФАКТ ПАМЯТИ</span>
+                `;
+                msgDiv.appendChild(brainDiv);
+            }
+
+            // Метаданные (проценты, трит, фаза)
+            if (metadata) {
+                const metaDiv = document.createElement('div');
+                metaDiv.className = 'meta';
+                
+                // Разбираем метаданные для красивого отображения
+                const parts = metadata.split('|').map(p => p.trim());
+                parts.forEach(part => {
+                    const span = document.createElement('span');
+                    span.textContent = part;
+                    
+                    // Цветовая индикация трита
+                    if (part.includes('⚪')) span.style.color = '#8e9efc';
+                    else if (part.includes('🟡')) span.style.color = '#f1c40f';
+                    else if (part.includes('🔴')) span.style.color = '#e74c3c';
+                    
+                    metaDiv.appendChild(span);
+                });
+                
+                msgDiv.appendChild(metaDiv);
+            }
+
+            chat.appendChild(msgDiv);
+            msgDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+
+        // Отправка сообщения
+        function sendMessage() {
+            const text = input.value.trim();
+            if (!text) return;
+
+            if (ws && ws.readyState === WebSocket.OPEN) {
+                // Добавляем сообщение пользователя
+                addMessage(text, 'user');
+                
+                // Отправляем на сервер
+                ws.send(JSON.stringify({ type: 'message', text }));
+                
+                // Очищаем поле ввода
+                input.value = '';
+            } else {
+                addMessage('⚠️ Нет соединения с сервером. Попробуйте перезагрузить страницу.', 'system');
+            }
+        }
+
+        // Обработчики событий
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Автофокус на поле ввода
+        input.focus();
+
+        // Запуск подключения
+        connect();
+
+        // Обработка закрытия страницы
+        window.addEventListener('beforeunload', () => {
+            if (ws) {
+                ws.close();
+            }
+        });
+    </script>
+</body>
+</html>
